@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Congratulations Winner!</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* Top Bar */
+
+    .topbar {
+        background: white;
+        padding: 12px 20px;
+        text-align: left;
+        font-weight: bold;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+        color: #4285F4;
+        font-size: 20px;
+    }
+
+    /* Main Box */
+
+    .container {
+        margin-top: 60px;
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        font-size: 14px;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    /* Prize Options */
+
+    .prizes {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .prize {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        width: 140px;
+    }
+
+    .trophy {
+        font-size: 50px;
+        color: #4285F4;
+    }
+
+    .choose-btn {
+        margin-top: 15px;
+        padding: 8px 16px;
+        border: none;
+        background: #00c853;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    /* Recent Winners */
+
+    .winners {
+        margin-top: 50px;
+        font-size: 13px;
+        color: #444;
+    }
+
+    .winner {
+        margin: 4px 0;
+    }
+
+    /* Confetti */
+
+    .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        animation: fall linear forwards;
+        z-index: 1;
+    }
+
+    @keyframes fall {
+        to {
+            transform: translateY(110vh) rotate(720deg);
+        }
+    }
+
+    /* Fake Alerts */
+
+    .alert {
+        position: fixed;
+        width: 260px;
+        background: #111;
+        border: 2px solid red;
+        border-radius: 10px;
+        padding: 15px;
+        color: white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        animation: shake 0.4s infinite;
+        z-index: 999;
+    }
+
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        50% { transform: translateX(4px); }
+        100% { transform: translateX(0); }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <span class="logo">Google</span>
+</div>
+
+<div class="container">
+
+    <h1>🎉 You've made the 5-billionth search! 🎉</h1>
+
+    <p>
+        You were selected as today’s lucky visitor.
+        Choose one of the hidden prizes below to claim your reward.
+    </p>
+
+    <!-- Prize Choices -->
+    <div class="prizes">
+
+        <div class="prize">
+            <div class="trophy">🏆</div>
+            <button class="choose-btn" onclick="claim()">CHOOSE</button>
+        </div>
+
+        <div class="prize">
+            <div class="trophy">🏆</div>
+            <button class="choose-btn" onclick="claim()">CHOOSE</button>
+        </div>
+
+        <div class="prize">
+            <div class="trophy">🏆</div>
+            <button class="choose-btn" onclick="claim()">CHOOSE</button>
+        </div>
+
+    </div>
+
+    <!-- Recent Winners -->
+    <div class="winners" id="winnersBox">
+        <h3>Recent Winners</h3>
+        <div class="winner">Maria L. — iPhone 15</div>
+        <div class="winner">John D. — MacBook Pro</div>
+        <div class="winner">Alex R. — AirPods</div>
+    </div>
+
+</div>
+
+<script>
+/* CONFETTI */
+
+function launchConfetti() {
+    for (let i = 0; i < 120; i++) {
+        let c = document.createElement("div");
+        c.className = "confetti";
+
+        c.style.left = Math.random() * 100 + "vw";
+        c.style.background =
+            "hsl(" + Math.random() * 360 + ",100%,50%)";
+
+        c.style.animationDuration =
+            (Math.random() * 3 + 2) + "s";
+
+        document.body.appendChild(c);
+
+        setTimeout(() => c.remove(), 5000);
+    }
+}
+
+launchConfetti();
+
+/* RECENT WINNERS AUTO UPDATE */
+
+const names = [
+    "Kevin P.",
+    "Sarah M.",
+    "Daniel T.",
+    "Chris A.",
+    "Angela R.",
+    "Mark V."
+];
+
+function addWinner() {
+    const box = document.getElementById("winnersBox");
+
+    let div = document.createElement("div");
+    div.className = "winner";
+
+    div.textContent =
+        names[Math.floor(Math.random()*names.length)] +
+        " — iPhone 15";
+
+    box.appendChild(div);
+
+    if (box.children.length > 7) {
+        box.removeChild(box.children[1]);
+    }
+}
+
+setInterval(addWinner, 3000);
+
+/* FAKE DEVICE ALERT SPAM */
+
+function claim() {
+
+    const messages = [
+        "⚠️ Virus detected on your device!",
+        "⚠️ System security compromised!",
+        "⚠️ Malware found!",
+        "⚠️ Storage corrupted!",
+        "⚠️ Suspicious network activity!"
+    ];
+
+    for (let i = 0; i < 6; i++) {
+
+        let alertBox = document.createElement("div");
+        alertBox.className = "alert";
+
+        alertBox.innerHTML =
+            "<b>" + messages[i%messages.length] + "</b><br>" +
+            "Immediate action required.";
+
+        alertBox.style.top = Math.random()*80 + "%";
+        alertBox.style.left = Math.random()*80 + "%";
+
+        document.body.appendChild(alertBox);
+    }
+}
+</script>
+
+</body>
+</html>

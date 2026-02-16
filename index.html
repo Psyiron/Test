@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Blog Website</title>
+
+<style>
+/* RESET */
+
+body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f1f1f1;
+    color: #333;
+}
+
+/* TOP NAV */
+
+.topbar {
+    background: #23282d;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+/* HEADER */
+
+header {
+    background: white;
+    padding: 30px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+header p {
+    margin: 5px 0 0;
+    color: #777;
+}
+
+/* NAV MENU */
+
+.nav {
+    background: #0073aa;
+    padding: 12px;
+    text-align: center;
+}
+
+.nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+/* LAYOUT */
+
+.container {
+    max-width: 1100px;
+    margin: 30px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 25px;
+    padding: 0 20px;
+}
+
+/* POSTS */
+
+.post {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+
+.post img {
+    width: 100%;
+    border-radius: 6px;
+}
+
+.post h2 {
+    margin-top: 15px;
+    color: #0073aa;
+}
+
+.post p {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
+    height: fit-content;
+}
+
+.sidebar h3 {
+    margin-top: 0;
+    border-bottom: 2px solid #0073aa;
+    padding-bottom: 6px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #23282d;
+    color: white;
+    margin-top: 40px;
+}
+
+/* FLOATING GIFT BUTTON */
+
+.gift-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #ff3c3c, #ffb300);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    animation: pulse 1.8s infinite;
+    z-index: 999;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.gift-btn:hover {
+    transform: scale(1.15);
+}
+</style>
+</head>
+
+<body>
+<!-- HEADER -->
+<header>
+    <h1>CurioSphere</h1>
+    <p>Live • Long • Prosper</p>
+</header>
+
+<!-- NAV -->
+<div class="nav">
+    <a href="#">Home</a>
+    <a href="#">Blog</a>
+    <a href="#">Projects</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="container">
+
+    <!-- POSTS -->
+    <div>
+
+        <div class="post">
+            <h2>Behind the Firewall: How Cyber Threats Evolve</h2>
+            <p>
+                Explore the constantly shifting world of cybersecurity, from ransomware attacks to phishing scams. Learn how individuals and organizations stay one step ahead in a digital landscape where threats are always evolving.
+            </p>
+        </div>
+
+        <div class="post">
+            <h2>Your Digital Shadow: Protecting Privacy in a Connected World</h2>
+            <p>
+                In an age where every click and swipe leaves a trace, discover practical strategies to safeguard your personal information. From encrypted messaging to mindful online behavior, learn how to reclaim control over your digital footprint.
+            </p>
+        </div>
+
+        <div class="post">
+            <h2>The Moral Compass of the Internet: Navigating Digital Ethics</h2>
+            <p>
+                Technology isn’t just about tools—it’s about choices. Delve into the ethical questions behind AI, data collection, and social media influence. Understand how responsible digital behavior shapes the online world for everyone.
+            </p>
+        </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <h3>Recent Posts</h3>
+        <ul>
+            <li>How to build 101?</li>
+            <li>Water in the fire?</li>
+            <li>Earth is flat?</li>
+            <li>Chicken or Egg first?</li>
+        </ul>
+
+        <h3>Categories</h3>
+        <ul>
+            <li>Life qoutes</li>
+            <li>Flat Earthers</li>
+            <li>Cults</li>
+            <li>Theory</li>
+        </ul>
+
+        <h3>About Me</h3>
+        <p style="font-size:14px; color:#555;">
+            This is CurioSphere where your mind will "blown" away
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    © 2026 CurioSphere • Live • Long • Prosper
+</footer>
+
+<!-- FLOATING GIFT AD -->
+<div class="gift-btn" onclick="openAd()" title="Claim Reward">
+    🎁
+</div>
+
+<script>
+function openAd() {
+    window.open("prize.html", "_blank");
+}
+</script>
+
+</body>
+</html>
